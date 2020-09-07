@@ -117,13 +117,13 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityPrese
 
             @Override
             protected void onPostExecute(List<Todo> todoList) {
-                if (isFromCheckedItemOfList){
-                    mListofTodos = recyclerViewAdapter.sortList(todoList);
-                }else{
+                //if (isFromCheckedItemOfList){
+                //    mListofTodos = recyclerViewAdapter.sortList(todoList);
+               // }else{
                     recyclerViewAdapter = new RecyclerViewAdapter(HomeActivity.this, todoList);
                     mRecyclerView.setAdapter(recyclerViewAdapter);
                     mListofTodos = todoList;
-                }
+               // }
 
                 //recyclerViewAdapter.updateTodoList(todoList);
             }
