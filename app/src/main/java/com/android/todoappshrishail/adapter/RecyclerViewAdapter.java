@@ -128,20 +128,4 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    //sortList
-    public List<Todo> sortList(List<Todo> todos) {
-        List<Todo> sortedList = new ArrayList<>();
-        List<Todo> listOfCheckedItems = new ArrayList<>();
-        for (Todo unitTodo : todos) {
-            if (!unitTodo.todo_is_checked) {
-                sortedList.add(unitTodo);
-            } else {
-                listOfCheckedItems.add(unitTodo);
-            }
-        }
-        sortedList.addAll(listOfCheckedItems);
-        updateTodoList(sortedList);
-        return sortedList;
-    }
-
 }
