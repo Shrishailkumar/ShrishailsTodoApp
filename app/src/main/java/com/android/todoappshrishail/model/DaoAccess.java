@@ -23,7 +23,7 @@ public interface DaoAccess {
     @Delete
     int deleteTodo(Todo todo); //Right now it is greyed out not deleted
 
-    @Query("SELECT * FROM " + MyDatabase.TABLE_NAME_TODO)
+    @Query("SELECT * FROM " + MyDatabase.TABLE_NAME_TODO + " ORDER BY Todo.todo_is_checked")
     List<Todo> fetchAllTodos();
 
 

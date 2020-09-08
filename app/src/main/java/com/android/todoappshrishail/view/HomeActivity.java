@@ -80,7 +80,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityPrese
     @Override
     protected void onResume() {
         super.onResume();
-        loadAllTodos(false);
+        loadAllTodos();
     }
 
 
@@ -102,13 +102,13 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityPrese
             protected void onPostExecute(Integer number) {
                 super.onPostExecute(number);
 
-                loadAllTodos(true);
+                loadAllTodos();
             }
         }.execute(todo);
 
     }
 
-    private void loadAllTodos(boolean isFromCheckedItemOfList) {
+    private void loadAllTodos() {
         new AsyncTask<String, Void, List<Todo>>() {
             @Override
             protected List<Todo> doInBackground(String... params) {
@@ -117,15 +117,9 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityPrese
 
             @Override
             protected void onPostExecute(List<Todo> todoList) {
-                if (isFromCheckedItemOfList){
-                    mListofTodos = recyclerViewAdapter.sortList(todoList);
-                }else{
                     recyclerViewAdapter = new RecyclerViewAdapter(HomeActivity.this, todoList);
-                    mRecyclerView.setAdapter(recyclerViewAdapter);
                     mListofTodos = todoList;
-                }
-
-                //recyclerViewAdapter.updateTodoList(todoList);
+                mRecyclerView.setAdapter(recyclerViewAdapter);
             }
         }.execute();
     }
@@ -133,7 +127,7 @@ public class HomeActivity extends AppCompatActivity implements HomeActivityPrese
     private void filter(String todoStr) {
         List<Todo> filterdTodo = new ArrayList<>();
         if (todoStr.equals("") || todoStr.equals(" ") || todoStr.isEmpty()) {
-            loadAllTodos(false);
+            loadAllTodos();
         } else {
             for (Todo s : mListofTodos) {
                 if (s.todo_name.contains(todoStr)) {

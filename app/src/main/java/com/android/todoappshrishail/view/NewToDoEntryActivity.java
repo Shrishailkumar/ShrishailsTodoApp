@@ -10,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -21,7 +22,10 @@ import com.android.todoappshrishail.model.MyDatabase;
 import com.android.todoappshrishail.model.NewTodoData;
 import com.android.todoappshrishail.model.Todo;
 import com.android.todoappshrishail.presenter.TodoActivityPresenter;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 public class NewToDoEntryActivity extends Activity implements TodoActivityPresenter.ITodoActivityDelegate {
 
